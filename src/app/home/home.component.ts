@@ -8,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   h1Style = false;
+  users: Object;
   constructor(private data: DataService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.data.getUsers().subscribe(data => {
+      this.users = data;
+      console.log(this.users);
+    });
+  }
 
   firstClick() {
     this.data.firstClick();
